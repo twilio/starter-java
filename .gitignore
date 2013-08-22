@@ -4,3 +4,15 @@
 *.jar
 *.war
 *.ear
+
+# Play Framework
+logs
+project/project
+project/target
+target
+tmp
+dist
+.cache
+conf/application.conf
+/.target
+.settings

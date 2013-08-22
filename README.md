@@ -1,4 +1,3 @@
-starter-java
-============
+# Welcome to the Java Guild!
 
-A starter app for Java developers embarking on their first Twilio quest!
+More information on setting up and working with this project is coming soon.
