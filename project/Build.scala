@@ -11,7 +11,8 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     javaCore,
     javaJdbc,
-    javaEbean
+    javaEbean,
+    "com.twilio.sdk" % "twilio-java-sdk" % "3.3.16"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
