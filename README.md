@@ -1,37 +1,44 @@
 # Welcome to the Java Guild!
 
-As members of the Java Guild, you will be working through the challenges of TwilioQuest using the Java programming language and the [Play Framework](http://www.playframework.com/).  This project is pre-configured to have some interesting functionality built in using the Twilio Java helper library.
+As members of the Java Guild, you will be working through the challenges of TwilioQuest using the Java programming language and the [Spark Framework](http://sparkjava.com/).  This project is pre-configured to have some interesting functionality built in using the Twilio Java helper library.
 
 ## Setting Up
 
 As a first step, you should [download this project](https://github.com/twilio/starter-java), or clone it if you are a Git user.  Navigate to the directory for this project, and open it with your favorite text editor.
 
-Rename the file `{project root}/conf/application.conf.sample` to `{project root}/conf/application.conf`.  Open this file and locate the following three lines of configuration:
+Before you can run this project, you will need to set three system environment variables.  These are:
 
-    twilio.accountSid="CHANGE_ME"
-    twilio.authToken="CHANGE_ME"
-    twilio.number="CHANGE_ME"
+* `TWILIO_ACCOUNT_SID` : Your Twilio "account SID" - it's like your username for the Twilio API.  This and the auth token (below) can be found [on the console](https://www.twilio.com/console).
+* `TWILIO_AUTH_TOKEN` : Your Twilio "auth token" - it's your password for the Twilio API.  This and the account SID (above) can be found [on the console](https://www.twilio.com/console).
+* `TWILIO_PHONE_NUMBER` : A Twilio number that you own, that can be used for making calls and sending messages.  You can find a list of phone numbers you control (and buy another one, if necessary) [in the account portal](https://www.twilio.com/console/phone-numbers/incoming).
 
-These values inside quotation marks will need to be replaced with the following information from your Twilio account:
+For Mac and Linux, environment variables can be set by opening a terminal window and typing the following three commands - replace all the characters after the `=` with values from your Twilio account:
 
-* `twilio.accountSid` : Your Twilio "account SID" - it's like your username for the Twilio API.  This and the auth token (below) can be found [on your account dashboard](https://www.twilio.com/user/account).
-* `twilio.authToken` : Your Twilio "auth token" - it's your password for the Twilio API.  This and the account SID (above) can be found [on your account dashboard](https://www.twilio.com/user/account).
-* `twilio.number` : A Twilio number that you own, that can be used for making calls and sending messages.  You can find a list of phone numbers you control (and buy another one, if necessary) [in the account portal](https://www.twilio.com/user/account/phone-numbers/incoming).
+    export TWILIO_ACCOUNT_SID=ACXXXXXXXXX
+    export TWILIO_AUTH_TOKEN=XXXXXXXXX
+    export TWILIO_PHONE_NUMBER=+16518675309
 
-Now that our project is ready, we need to [download and install the Play Framework](http://www.playframework.com/documentation/2.1.x/Installing) following the instructions on their web site.  Once the Play command is available on your system path, navigate to your project's directory in a terminal window.
+To make these changes persist for every new terminal (on OS X), you can edit the file `~/.bash_profile` to contain the three commands above.  This will set these environment variables for every subsequent session. Once you have edited the file to contain these commands, run `source ~/.bash_profile` in the terminal to set up these variables.
+
+On Windows, the easiest way to set permanent environment variables (as of Windows 8) is using the `setx` command.  Note that there is no `=`, just the key and value separated by a space:
+
+    setx TWILIO_ACCOUNT_SID ACXXXXXXXXX
+    setx TWILIO_AUTH_TOKEN XXXXXXXXX
+    setx TWILIO_PHONE_NUMBER +16518675309
 
 ## Running the Application
-To run the application, we first need to start a Play console session.  To start the Play console, navigate to the starter project directory in a Terminal and use the command `play`:
+Now that our project is ready, we need to build it using [maven](https://maven.apache.org/):
 
-![play console](http://demo.kevinwhinnery.com/upload/starter-java_%E2%80%94_java_%E2%80%94_202%C3%9754-20130827-141430.png)
+```
+mvn clean install
+```
 
-To run the application, enter the command `run`.  This will start a local HTTP server [running on port 9000](http://localhost:9000/) on your computer:
+Start the application:
+```
+java -jar target/starter-java-with-dependencies.jar 
+```
 
-![run command](http://demo.kevinwhinnery.com/upload/starter-java_%E2%80%94_java_%E2%80%94_202%C3%9754-20130827-141558.png)
-
-When you vist [http://localhost:9000/](http://localhost:9000/) in a web browser, you should see a page that looks like this:
-
-![java guild app](http://demo.kevinwhinnery.com/upload/Welcome_to_the_Java_Guild%21-20130827-141929.png)
+Now you can visit [http://localhost:4567/](http://localhost:4567)
 
 Try out the text message and voice call demos by entering your mobile phone number and clicking the button.  If you receive a text message and a call, everything is working!
 

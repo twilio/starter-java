@@ -17,3 +17,6 @@ dist
 conf/application.conf
 /.target
 .settings
+.idea
+*.iml
+.env
