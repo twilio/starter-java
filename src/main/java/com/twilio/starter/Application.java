@@ -19,6 +19,6 @@ public class Application {
 
         post("/call", CallController.handlePost);
         post("/message", MessageController.handlePost);
-        post("/hello", TwimlController.handleGet);
+        post("/hello", TwimlController.handlePost);
     }
 }
